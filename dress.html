@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <title>FACE/OFF chatroom</title>
+
+    <script type="text/javascript">
+    	function init(){
+
+    		var dressPicList = ['https://images-na.ssl-images-amazon.com/images/I/317V85FCY8L._AC_US160_.jpg', 'https://images-na.ssl-images-amazon.com/images/I/315VIxa6P8L._AC_US160_.jpg', 'https://images-na.ssl-images-amazon.com/images/I/31nz2Xwh1FL._AC_US160_.jpg', 'https://images-na.ssl-images-amazon.com/images/I/31uHFS3416L._AC_US160_.jpg', 'https://images-na.ssl-images-amazon.com/images/I/31S-slWWD0L._AC_US160_.jpg', 'https://images-na.ssl-images-amazon.com/images/I/318YKKRkQXL._AC_US160_.jpg', 'https://images-na.ssl-images-amazon.com/images/I/31-n1AFkovL._AC_US160_.jpg', 'https://images-na.ssl-images-amazon.com/images/I/51gQvG3Na+L._AC_US160_.jpg', 'https://images-na.ssl-images-amazon.com/images/I/31kveyan7xL._AC_US160_.jpg', 'https://images-na.ssl-images-amazon.com/images/I/51nJMQlhnUL._AC_US160_.jpg']
+
+
+    		//Get User Media
+			var my_stream = null;
+			window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+			navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+			if (navigator.getUserMedia) {
+				navigator.getUserMedia({video: true}, function(stream) {
+						videoElement = document.getElementById('myvideo');
+						my_stream = stream;
+						videoElement.src = window.URL.createObjectURL(stream) || stream;
+						videoElement.play();
+					}, function(err) {
+						console.log('Failed to get local stream' ,err);
+				});
+			}
+
+
+	    }	
+	    	window.addEventListener('load',init);
+    </script>
+
+
+</head>
+
+
+<body>
+	<div class="container-fluid">
+		<div class="row title">
+			<h1>FACE/OFF chatroom</h1>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="mycamera col-md-3">
+				<video id="myvideo" width="320" height="240"></video>
+			</div>
+			<div class="adduser col-md-3"></div>
+		</div>
+	</div>
+
+
+	<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+</body>
+
+</html>
